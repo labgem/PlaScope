@@ -1,3 +1,6 @@
+![GitHub Logo](/PlaScope_supernova.png)
+Format: ![Alt Text](url)
+
 # PlaScope
 
 
