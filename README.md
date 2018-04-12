@@ -68,5 +68,9 @@ pyfasta extract --header --fasta your_genome.fasta --file unknown_list > your_ge
 See Reference_chromosome.tab for the list of *E. coli* chromosome used in our exemple
 See Reference_plasmid.tab for the list of plasmids and their related database.
 
+## Create your own database
 
+You can also design your own database as explained On Centrifuge website https://ccb.jhu.edu/software/centrifuge/manual.shtml#custom-database.
+
+You need to prepare two files, as described below :
 
