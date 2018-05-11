@@ -24,10 +24,6 @@ SPAdes 3.10.1 or later to run the assembly (header of contigs must be the same a
 
 Centrifuge 1.0.3 (https://github.com/infphilo/centrifuge)
 
-GNU awk (https://www.gnu.org/software/gawk/manual/gawk.html)
-
-Pyfasta (https://github.com/brentp/pyfasta)
-
 
 ## Classification of contigs according to their location
 
