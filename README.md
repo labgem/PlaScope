@@ -43,7 +43,9 @@ usage: PlaScope.sh [OPTIONS] [ARGUMENTS]
 Wrapper to launch PlaScope (SPAdes + Centrifuge-based plasmidic sequences classification)
 ````
 
-## Composition of the *E. coli* database
+## *E. coli* database
+
+To download *E. coli* database, please download the required files on Zenodo: http://doi.org/10.5281/zenodo.1245664 
 
 See Reference_chromosome.tab for the list of *E. coli* chromosome used in our exemple
 See Reference_plasmid.tab for the list of plasmids and their related database.
