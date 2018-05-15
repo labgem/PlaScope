@@ -115,21 +115,19 @@ awk -F'\t' '$3==1 && $7>=500 && $6>=100 {print $1}' ${OUTPUT}/${INPUT}_PlaScope/
 ######     Awk fasta extraction   #######
 #########################################
 
-
 chromosome_extraction()
 {
-awk 'NR==FNR{n[">"$0];next} i {print i ORS $0;i=""} $0 in n{i=$0}' ${OUTPUT}/${INPUT}_PlaScope/Centrifuge_results/${INPUT}_chromosomelist ${OUTPUT}/${INPUT}_PlaScope/SPAdes/contigs.fasta > ${OUTPUT}/${INPUT}_PlaScope/PlaScope_predictions/${INPUT}_chromosome.fasta
+awk 'NR==FNR{a[">"$0];next}/^>/{f=0;}($0 in a)||f{print;f=1}' ${OUTPUT}/${INPUT}_PlaScope/Centrifuge_results/${INPUT}_chromosomelist ${OUTPUT}/${INPUT}_PlaScope/SPAdes/contigs.fasta > ${OUTPUT}/${INPUT}_PlaScope/PlaScope_predictions/${INPUT}_chromosome.fasta
 }
 
 plasmid_extraction()
 {
-awk 'NR==FNR{n[">"$0];next} i {print i ORS $0;i=""} $0 in n{i=$0}' ${OUTPUT}/${INPUT}_PlaScope/Centrifuge_results/${INPUT}_plasmidlist ${OUTPUT}/${INPUT}_PlaScope/SPAdes/contigs.fasta > ${OUTPUT}/${INPUT}_PlaScope/PlaScope_predictions/${INPUT}_plasmid.fasta
+awk 'NR==FNR{a[">"$0];next}/^>/{f=0;}($0 in a)||f{print;f=1}' ${OUTPUT}/${INPUT}_PlaScope/Centrifuge_results/${INPUT}_plasmidlist ${OUTPUT}/${INPUT}_PlaScope/SPAdes/contigs.fasta > ${OUTPUT}/${INPUT}_PlaScope/PlaScope_predictions/${INPUT}_plasmid.fasta
 }
 
 UC_extract()
 {
-awk 'NR==FNR{n[">"$0];next} i {print i ORS $0;i=""} $0 in n{i=$0}' ${OUTPUT}/${INPUT}_PlaScope/Centrifuge_results/${INPUT}_unclassifiedlist ${OUTPUT}/${INPUT}_PlaScope/SPAdes/contigs.fasta > ${OUTPUT}/${INPUT}_PlaScope/PlaScope_predictions/${INPUT}_unclassified.fasta
-}
+awk 'NR==FNR{a[">"$0];next}/^>/{f=0;}($0 in a)||f{print;f=1}' ${OUTPUT}/${INPUT}_PlaScope/Centrifuge_results/${INPUT}_unclassifiedlist ${OUTPUT}/${INPUT}_PlaScope/SPAdes/contigs.fasta > ${OUTPUT}/${INPUT}_PlaScope/PlaScope_predictions/${INPUT}_unclassified.fasta
 
 ####################################
 #### Get argument with getopts #####
