@@ -11,7 +11,7 @@ If you use our approach, please cite :
 
 
 This method enables you to classify contigs from a WGS assembly according to their location (i.e. plasmid or chromosome). It is based on a smart tool called Centrifuge (https://github.com/infphilo/centrifuge), initially developped as a metagenomic classifier.
-We proposed here an application on *E. coli* plasmidome, with a specific database build on one hand on completely finished genomes of *E. coli* from the NCBI, and on the other hand on a custom plasmid database. In fact 3 databases of plasmid have been merged together : plasmids used to create plasmidfinder (http://aac.asm.org/content/58/7/3895.long), plasmids proposed by Orlek *et al.* (https://www.sciencedirect.com/science/article/pii/S2352340917301567?via%3Dihub) and plasmids from the ColiScope project ()
+We proposed here an application on *E. coli* plasmidome, with a specific database build on one hand on completely finished genomes of *E. coli* from the NCBI, and on the other hand on a custom plasmid database. In fact 3 databases of plasmid have been merged together : plasmids used to create plasmidfinder (http://aac.asm.org/content/58/7/3895.long), plasmids proposed by Orlek *et al.* (https://www.sciencedirect.com/science/article/pii/S2352340917301567?via%3Dihub) and plasmids from the RepliColScope project (http://www.agence-nationale-recherche.fr/Project-ANR-10-GENM-0012 / https://www.ebi.ac.uk/ena/data/view/PRJEB24625)
 
 However we think that this method can easily be applied to other bacterial species since you have got enough reference data.
 
