@@ -115,6 +115,7 @@ awk -F'\t' '$3==1 && $7>=500 && $6>=100 {print $1}' ${OUTPUT}/${INPUT}_PlaScope/
 ######     Awk fasta extraction   #######
 #########################################
 
+
 chromosome_extraction()
 {
 awk 'NR==FNR{a[">"$0];next}/^>/{f=0;}($0 in a)||f{print;f=1}' ${OUTPUT}/${INPUT}_PlaScope/Centrifuge_results/${INPUT}_chromosomelist ${OUTPUT}/${INPUT}_PlaScope/SPAdes/contigs.fasta > ${OUTPUT}/${INPUT}_PlaScope/PlaScope_predictions/${INPUT}_chromosome.fasta
@@ -128,6 +129,7 @@ awk 'NR==FNR{a[">"$0];next}/^>/{f=0;}($0 in a)||f{print;f=1}' ${OUTPUT}/${INPUT}
 UC_extract()
 {
 awk 'NR==FNR{a[">"$0];next}/^>/{f=0;}($0 in a)||f{print;f=1}' ${OUTPUT}/${INPUT}_PlaScope/Centrifuge_results/${INPUT}_unclassifiedlist ${OUTPUT}/${INPUT}_PlaScope/SPAdes/contigs.fasta > ${OUTPUT}/${INPUT}_PlaScope/PlaScope_predictions/${INPUT}_unclassified.fasta
+}
 
 ####################################
 #### Get argument with getopts #####
@@ -252,4 +254,3 @@ UC_extract
 echo "If you use PlaScope please cite : ..."
 
 exit 0
-
