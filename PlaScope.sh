@@ -195,7 +195,7 @@ then
 	FQ_DIR="."
 fi
 
-if [[ -z "${FQ_DIR:-}" ]]
+if [[ -z "${O_DIR:-}" ]]
 then
 	# default value:  current directory
 	O_DIR="."
