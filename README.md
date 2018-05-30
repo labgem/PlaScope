@@ -20,7 +20,7 @@ However we think that this method can easily be applied to other bacterial speci
 
 You must install these dependencies before you start :
 
-SPAdes 3.10.1 or later to run the assembly (header of contigs must be the same as in version 3.10.1) (http://bioinf.spbau.ru/spades)
+SPAdes 3.10.1 or later if you want to run the assembly (= mode 1) (header of contigs must be the same as in version 3.10.1) (http://bioinf.spbau.ru/spades)
 
 Centrifuge 1.0.3 (https://github.com/infphilo/centrifuge)
 
@@ -32,15 +32,29 @@ Centrifuge 1.0.3 (https://github.com/infphilo/centrifuge)
 
 usage: PlaScope.sh [OPTIONS] [ARGUMENTS]
 
--h, --help		display this message
--t			number of threads[OPTIONAL] [default : 8] 
--i			fastq name (assumed to be filename_1.fastq.gz / filename_2.fastq.gz) [MANDATORY]
---fastq_dir		path to fastq directory [MANDATORY]
--o			output directory [OPTIONAL] [default : current directory]
---db_dir		path to centrifuge database [MANDATORY]
---db_name		centrifuge database name [MANDATORY]
+General options:
+  -h, --help		display this message
+  -t			number of threads[OPTIONAL] [default : 8]
+  -o			output directory [OPTIONAL] [default : current directory]
+  --sample		Sample name [MANDATORY]
+  --db_dir		path to centrifuge database [MANDATORY]
+  --db_name		centrifuge database name [MANDATORY]  
+  
+Mode 1: SPAdes assembly + contig classification 
+  -1			forward paired-end reads [MANDATORY]
+  -2			reverse paired-end reads [MANDATORY]
+  
+  
+Mode 2: contig classification of a fasta file (only if you already have your SPAdes assembly!)
+  --fasta		SPAdes assembly fasta file [MANDATORY]
 
-Wrapper to launch PlaScope (SPAdes + Centrifuge-based plasmidic sequences classification)
+
+
+Example mode 1:
+plaScope.sh -1 my_reads_1.fastq.gz -2 my_reads_2.fastq.gz -o output_directory  --db_dir path/to/DB --db_name chromosome_plasmid_db --sample name_of_my_sample
+
+Example mode 2:
+plaScope.sh --fasta my_fastafile.fasta -o output_directory --db_dir path/to/DB --db_name chromosome_plasmid_db --sample name_of_my_sample
 ````
 
 ## *E. coli* database
