@@ -28,9 +28,9 @@ Centrifuge 1.0.3 (https://github.com/infphilo/centrifuge)
 ## Classification of contigs according to their location
 
 ```
-./PlaScope.sh -h
+./plaScope.sh -h
 
-usage: PlaScope.sh [OPTIONS] [ARGUMENTS]
+usage: plaScope.sh [OPTIONS] [ARGUMENTS]
 
 General options:
   -h, --help		display this message
