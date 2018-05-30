@@ -27,6 +27,10 @@ Centrifuge 1.0.3 (https://github.com/infphilo/centrifuge)
 
 ## Classification of contigs according to their location
 
+You can choose between two modes:
+⋅⋅* Mode 1: SPAdes assembly then contig classification
+⋅⋅* Mode 2: contig classification only (if you already assembled your genome with SPAdes)
+
 ```
 ./plaScope.sh -h
 
