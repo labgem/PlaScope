@@ -72,7 +72,7 @@ See Reference_plasmid.tab for the list of plasmids and their related database.
 
 We propose another database for *Klebsiella* strains, the 3 required files are also available on Zenodo : https://zenodo.org/record/1265882#.WxVZhHWFPmF
 
-However this database has not been extensively evaluated. We only have assessed it's performances on betalactamase-coding gene location for 571 strains of *Klebsiella* genera. See Klebsiella_PlaScope_tree.svg for the results. "Unclassified" location of some betalactamases was mainly due to short-size of the contigs carrying this genes (median: 2375 bp, 1st quarter: 2321 bp, 3rd quarter: 3863 bp). Resistance genes presence/absence was determined with abricate (https://github.com/tseemann/abricate) and the ResFinder database (Zankari *et al.*, JAC, 2012). The tree was constructed with (https://itol.embl.de/upload.cgi)
+However this database has not been extensively evaluated. We only have assessed it's performances on betalactamase-coding gene location for 571 strains of *Klebsiella* genera (Klebsiella_analysed_genomes_list.tab). See Klebsiella_PlaScope_tree.svg for the results. "Unclassified" location of some betalactamases was mainly due to short-size of the contigs carrying this genes (median: 2375 bp, 1st quarter: 2321 bp, 3rd quarter: 3863 bp). Resistance genes presence/absence was determined with abricate (https://github.com/tseemann/abricate) and the ResFinder database (Zankari *et al.*, JAC, 2012). The tree was constructed with (https://itol.embl.de/upload.cgi)
 
 See Reference_chromosome_klebsiella.tab for the list of *Klebsiella* chromosome used in this databse.
 See Reference_plasmid_klebsiella.tab for the list of plasmids.
