@@ -5,7 +5,7 @@
 
 A targeted approach to assess the plasmidome of bacteria.
 
-If you use our approach, please cite :
+A preprint version is available on: https://www.biorxiv.org/content/early/2018/05/30/334805
 
 ## Tell me more about PlaScope
 
