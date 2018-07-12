@@ -427,7 +427,9 @@ then
 	mode_1
 	echo "Step $step: Running assembly with SPAdes"
 
-	spades.py --careful -t ${THREADS} -1 ${READ1} -2 ${READ2} -o ${OUTPUT}/${PREFIX}_PlaScope/SPAdes
+	# SPAdes automatically stores its log in ${OUTPUT}/${PREFIX}_PlaScope/SPAdes/spades.log so we redirect output to /dev/nulll
+	echo SPAdes log can be found here: ${OUTPUT}/${PREFIX}_PlaScope/SPAdes/spades.log
+	spades.py --careful -t ${THREADS} -1 ${READ1} -2 ${READ2} -o ${OUTPUT}/${PREFIX}_PlaScope/SPAdes &> /dev/null
 
 	FASTA="${OUTPUT}/${PREFIX}_PlaScope/SPAdes/contigs.fasta"
 	(( step++ ))
@@ -440,7 +442,10 @@ echo "Step $step: Contigs classification with Centrifuge and custom database"
 
 export CENTRIFUGE_INDEXES=${DB_DIR}
 
-centrifuge -f --threads ${THREADS} -x ${DB_NAME} -U ${FASTA} -k 1 --report-file ${OUTPUT}/${PREFIX}_PlaScope/Centrifuge_results/${PREFIX}_summary -S ${OUTPUT}/${PREFIX}_PlaScope/Centrifuge_results/${PREFIX}_extendedresult
+# We don't need centrifuge output but we still redirect stdout and stderr to a file
+CENTRIFUGE_LOG=${OUTPUT}/${PREFIX}_PlaScope/Centrifuge_results/centrifuge.log
+echo Centrifuge log can be found here: ${CENTRIFUGE_LOG}
+centrifuge -f --threads ${THREADS} -x ${DB_NAME} -U ${FASTA} -k 1 --report-file ${OUTPUT}/${PREFIX}_PlaScope/Centrifuge_results/${PREFIX}_summary -S ${OUTPUT}/${PREFIX}_PlaScope/Centrifuge_results/${PREFIX}_extendedresult &> ${CENTRIFUGE_LOG}
 
 (( step++ ))
 
