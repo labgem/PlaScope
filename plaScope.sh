@@ -46,7 +46,8 @@ cat << EOF
 usage: plaScope.sh [OPTIONS] [ARGUMENTS]
 
 General options:
-  -h, --help		display this message
+  -h, --help		display this message and exit
+  -v, --version		display version number and exit
   -t			number of threads[OPTIONAL] [default : 8]
   -o			output directory [OPTIONAL] [default : current directory]
   --sample		Sample name [MANDATORY]
