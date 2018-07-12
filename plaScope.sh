@@ -22,6 +22,8 @@
 # Author Guilhem ROYER groyer@genoscope.cns.fr | 06/04/2018  #
 ##############################################################
 
+VERSION=1.2-snapshot
+
 set -e
 set -u
 set -o pipefail
@@ -30,6 +32,13 @@ set -o pipefail
 #############
 #   Help    #
 #############
+
+version()
+{
+cat << EOF
+$VERSION
+EOF
+}
 
 usage()
 {
@@ -232,7 +241,7 @@ output { print >  output }' $contigsortingfile $contigfile
 #### Get argument with getopts #####
 ####################################
 
-while getopts ":1:2:o:t:-:h" optchar; do
+while getopts ":1:2:o:t:-:h:v" optchar; do
 	case "${optchar}" in
 		 -)
 			case "${OPTARG}" in
@@ -240,6 +249,9 @@ while getopts ":1:2:o:t:-:h" optchar; do
 					usage
 					exit
 					;;
+				version)
+					version
+					exit;;
 				db_dir)
 					CENTRI_DIR="${!OPTIND}"; OPTIND=$(( $OPTIND + 1 ))
 					;;
@@ -255,6 +267,10 @@ while getopts ":1:2:o:t:-:h" optchar; do
 			esac;;
 		h)
 			usage
+			exit
+			;;
+		v)
+			version
 			exit
 			;;
 		1)
