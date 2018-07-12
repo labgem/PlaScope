@@ -326,7 +326,7 @@ MODE=""
 
 #Check that mandatory options are not empty
 
-if [[ -z "${CENTRI_DIR:-}" ]] || [[ -z "${DB_NAME:-}" ]]
+if [[ -z "${CENTRI_DIR:-}" ]] || [[ -z "${DB_NAME:-}" ]] || [[ -z "${PREFIX:-}" ]]
 then
 	usage
 	exit 1
@@ -338,7 +338,6 @@ then
 	usage
 	exit 1
 fi
-
 
 
 #Check that "mode 1" and "mode 2" are not used at the same time
