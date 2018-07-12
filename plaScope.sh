@@ -22,7 +22,7 @@
 # Author Guilhem ROYER groyer@genoscope.cns.fr | 06/04/2018  #
 ##############################################################
 
-VERSION=1.2-snapshot
+VERSION=1.3
 
 set -e
 set -u
