@@ -48,6 +48,7 @@ usage: plaScope.sh [OPTIONS] [ARGUMENTS]
 General options:
   -h, --help		display this message and exit
   -v, --version		display version number and exit
+  -n, --no-banner	don't print beautiful banners
   -t			number of threads[OPTIONAL] [default : 8]
   -o			output directory [OPTIONAL] [default : current directory]
   --sample		Sample name [MANDATORY]
@@ -86,6 +87,12 @@ EOF
 
 plascope()
 {
+
+if [[ ${NO_BANNER} -eq 1 ]]
+then
+	return
+fi
+
 cat << "EOF"
 
 # MNXXXXXXXXXXXXNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXXXXXXXXXXXXXXXXNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
@@ -108,6 +115,13 @@ EOF
 
 mode_1()
 {
+
+if [[ ${NO_BANNER} -eq 1 ]]
+then
+	echo "Mode 1"
+	return
+fi
+
 cat << "EOF"
 
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
@@ -131,6 +145,13 @@ EOF
 
 mode_2()
 {
+
+if [[ ${NO_BANNER} -eq 1 ]]
+then
+	echo "Mode 2"
+	return
+fi
+
 cat << "EOF"
 
 
@@ -242,7 +263,7 @@ output { print >  output }' $contigsortingfile $contigfile
 #### Get argument with getopts #####
 ####################################
 
-while getopts ":1:2:o:t:-:h:v" optchar; do
+while getopts ":1:2:o:t:-:h:v:n" optchar; do
 	case "${optchar}" in
 		 -)
 			case "${OPTARG}" in
@@ -253,6 +274,9 @@ while getopts ":1:2:o:t:-:h:v" optchar; do
 				version)
 					version
 					exit;;
+				no-banner)
+					NO_BANNER=1
+					;;
 				db_dir)
 					CENTRI_DIR="${!OPTIND}"; OPTIND=$(( $OPTIND + 1 ))
 					;;
@@ -273,6 +297,9 @@ while getopts ":1:2:o:t:-:h:v" optchar; do
 		v)
 			version
 			exit
+			;;
+		n)
+			NO_BANNER=1
 			;;
 		1)
 			READ1=${OPTARG}
@@ -340,7 +367,8 @@ else
 	exit 1
 fi
 
-
+# default value: use banner
+NO_BANNER=${NO_BANNER-0}
 
 # Set default values of optional parameters
 if [[ -z "${THREADS:-}" ]]
