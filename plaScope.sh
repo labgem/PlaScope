@@ -42,13 +42,13 @@ General options:
   -o			output directory [OPTIONAL] [default : current directory]
   --sample		Sample name [MANDATORY]
   --db_dir		path to centrifuge database [MANDATORY]
-  --db_name		centrifuge database name [MANDATORY]  
-  
-Mode 1: SPAdes assembly + contig classification 
+  --db_name		centrifuge database name [MANDATORY]
+
+Mode 1: SPAdes assembly + contig classification
   -1			forward paired-end reads [MANDATORY]
   -2			reverse paired-end reads [MANDATORY]
-  
-  
+
+
 Mode 2: contig classification of a fasta file (only if you already have your SPAdes assembly!)
   --fasta		SPAdes assembly fasta file [MANDATORY]
 
@@ -145,7 +145,7 @@ EOF
 echoerr() { printf "Error: %s\n" "$*" >&2; }
 
 #testfile
-testfile() 
+testfile()
 {
 if [[ ! -f "$1"  ]]
 then
@@ -190,8 +190,8 @@ getline
 {clab=$1; split(clab,T,"_") ; ccov=T[6];
 
 if ( $7>=contiglength && $6>=hitlength && ccov>contigcov )  print $1,TPLASCOPERES[$3]
- 
-else print $1,TPLASCOPERES[0] 
+
+else print $1,TPLASCOPERES[0]
 
 }' $plascopeextendres
 
@@ -213,9 +213,9 @@ local contigfileprefix="$3"
 awk -F'\t' -v contigfileprefix=${contigfileprefix} '
 NR==FNR{Tcontig[">"$1]=$2;next}
 
-/^>/ {  
+/^>/ {
 if ($1 in Tcontig)  output=contigfileprefix"_"Tcontig[$1]".fasta"
-else 
+else
 {
 print "Warning:", $1, "not classified." > "/dev/stderr"
 output=""
@@ -238,14 +238,14 @@ while getopts ":1:2:o:t:-:h" optchar; do
 			case "${OPTARG}" in
 				help)
 					usage
-					exit 
+					exit
 					;;
 				db_dir)
 					CENTRI_DIR="${!OPTIND}"; OPTIND=$(( $OPTIND + 1 ))
 					;;
 				db_name)
 					DB_NAME="${!OPTIND}"; OPTIND=$(( $OPTIND + 1 ))
-					;;					
+					;;
 				fasta)
 					FASTA="${!OPTIND}"; OPTIND=$(( $OPTIND + 1 ))
 					;;
@@ -266,7 +266,7 @@ while getopts ":1:2:o:t:-:h" optchar; do
 		t)
 			THREADS=${OPTARG}
 			;;
-		o)  
+		o)
 			O_DIR=${OPTARG}
 			;;
 		?)
@@ -282,7 +282,7 @@ MODE=""
 
 #Check that mandatory options are not empty
 
-if [[ -z "${CENTRI_DIR:-}" ]] || [[ -z "${DB_NAME:-}" ]] 
+if [[ -z "${CENTRI_DIR:-}" ]] || [[ -z "${DB_NAME:-}" ]]
 then
 	usage
 	exit 1
@@ -307,15 +307,15 @@ then
 fi
 
 if [[ "${FASTA:-}" ]]
-then 
+then
 	MODE=2
-	
+
 	testfile "${FASTA}"
-	
+
 elif [[ "${READ1:-}" &&  "${READ2:-}"  ]]
-then	
+then
 	MODE=1
-	
+
 	testfile "${READ1}"
 	testfile "${READ2}"
 else
@@ -382,14 +382,14 @@ if [[ "${MODE}" == 1 ]]
 then
 	mode_1
 	echo "Step $step: Running assembly with SPAdes"
-	
+
 	spades.py --careful -t ${THREADS} -1 ${READ1} -2 ${READ2} -o ${OUTPUT}/${PREFIX}_PlaScope/SPAdes
-	
+
 	FASTA="${OUTPUT}/${PREFIX}_PlaScope/SPAdes/contigs.fasta"
-	(( step++ )) 
+	(( step++ ))
 else
 	mode_2
-	
+
 fi
 
 echo "Step $step: Contigs classification with Centrifuge and custom database"
@@ -398,7 +398,7 @@ export CENTRIFUGE_INDEXES=${DB_DIR}
 
 centrifuge -f --threads ${THREADS} -x ${DB_NAME} -U ${FASTA} -k 1 --report-file ${OUTPUT}/${PREFIX}_PlaScope/Centrifuge_results/${PREFIX}_summary -S ${OUTPUT}/${PREFIX}_PlaScope/Centrifuge_results/${PREFIX}_extendedresult
 
-(( step++ )) 
+(( step++ ))
 
 echo "Step $step: Extraction of plasmid, chromosome and unclassified predictions"
 
