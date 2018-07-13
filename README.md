@@ -69,14 +69,14 @@ https://github.com/GuilhemRoyer/PlaScope
 
 ## *E. coli* database
 
-To get the *E. coli* database, please download the following file on Zenodo: https://zenodo.org/record/1311641
+To get the *E. coli* database, please download the following file on Zenodo: https://doi.org/10.5281/zenodo.1311641
 
 After extracting the tar.gz file, you will have 3 files : chromosome_plasmid_db.1.cf, chromosome_plasmid_db.2.cf and chromosome_plasmid_db.3.cf. All these files are required for PlaScope. The argument --db_dir in PlaScope is the path to the directory where these 3 files are located, and the argument --db_name in this case is "chromosome_plasmid_db".
 
 
 ## Klebsiella database
 
-To get the Klebsiella database, please download the following file on Zenodo: https://zenodo.org/record/1311647
+To get the Klebsiella database, please download the following file on Zenodo: https://doi.org/10.5281/zenodo.1311647
 
 After extracting the tar.gz file, you will have 3 files : Klebsiella_PlaScope.1.cf, Klebsiella_PlaScope.2.cf and Klebsiella_PlaScope.3.cf. All these files are required for PlaScope. The argument --db_dir in PlaScope is the path to the directory where these 3 files are located, and the argument --db_name in this case is "Klebsiella_PlaScope".
 
