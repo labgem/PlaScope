@@ -15,7 +15,7 @@ We propose here an application on *E. coli* plasmidome, with a specific database
 
 * plasmids used to create plasmidfinder (http://aac.asm.org/content/58/7/3895.long)
 * plasmids proposed by Orlek *et al.* (https://www.sciencedirect.com/science/article/pii/S2352340917301567?via%3Dihub)
-* plasmids from Branger *et al.*, Extended-spectrum ß-lactamase-genes are spreading on a wide range of Escherichia coli plasmids existing prior the use of third generation cephalosporins, Microbial Genomics, In press
+* plasmids from Branger *et al.*, Extended-spectrum ß-lactamase-genes are spreading on a wide range of Escherichia coli plasmids existing prior the use of third generation cephalosporins, Microbial Genomics, 2018, In press
 
 We also propose a Klebsiella database that has been evaluated on a clinical dataset of 12 *Klebsiella pneumoniae* strains.
 
