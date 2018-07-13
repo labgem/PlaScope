@@ -30,8 +30,13 @@ You must install these dependencies before you start :
 * [SPAdes](http://bioinf.spbau.ru/spades) 3.10.1 or later if you want to run the assembly (= mode 1) (header of contigs must be the same as in version 3.10.1)
 * [Centrifuge](https://github.com/infphilo/centrifuge) 1.0.3
 
-`PlaScope` is essentially a wrapper script (called `plaScope.sh`) around those tools.
+### Installation
+
+`PlaScope` is essentially a wrapper script (called `plaScope.sh`) around SPAdes and Centrifuge.
 It's written in `bash` and `awk` and should work on Linux and Mac OS X both with GNU awk and BSD awk.
+
+To install it, simply download the sources and decompress them.
+Don't forget to add the location of `plaScope.sh` to your `PATH`.
 
 ### Installation with BioConda
 
@@ -41,6 +46,8 @@ Once you have created and activated a `conda` environment, simply type:
 ```bash
 $ conda install plascope
 ```
+
+Note that several versions of `awk` are available in `conda` so you can further control the environment.
 
 ## Usage
 
