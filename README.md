@@ -11,7 +11,7 @@ A preprint version is available on: https://www.biorxiv.org/content/early/2018/0
 
 
 This method enables you to classify contigs from a WGS assembly according to their location (i.e. plasmid or chromosome). It is based on a smart tool called [Centrifuge](https://github.com/infphilo/centrifuge), initially developed as a metagenomic classifier.
-We propose here an application on *E. coli* plasmidome, with a specific database build on one hand completely finished genomes of *E. coli* from the NCBI, and on the other hand on a custom plasmid database. In fact 3 databases of plasmid have been merged together : plasmids used to create plasmidfinder (http://aac.asm.org/content/58/7/3895.long), plasmids proposed by Orlek *et al.* (https://www.sciencedirect.com/science/article/pii/S2352340917301567?via%3Dihub) and plasmids from the RepliColScope project (http://www.agence-nationale-recherche.fr/Project-ANR-10-GENM-0012 / https://www.ebi.ac.uk/ena/data/view/PRJEB24625)
+We propose here an application on *E. coli* plasmidome, with a specific database build on one hand completely finished genomes of *E. coli* from the NCBI, and on the other hand on a custom plasmid database. In fact 3 databases of plasmid have been merged together : plasmids used to create plasmidfinder (http://aac.asm.org/content/58/7/3895.long), plasmids proposed by Orlek *et al.* (https://www.sciencedirect.com/science/article/pii/S2352340917301567?via%3Dihub) and plasmids from the [RepliColScope project](http://www.agence-nationale-recherche.fr/Project-ANR-10-GENM-0012 / https://www.ebi.ac.uk/ena/data/view/PRJEB24625)
 
 We also propose a Klebsiella database that has been evaluated on a clinical dataset of 12 *Klebsiella pneumoniae* strains.
 
@@ -38,7 +38,7 @@ Once you have created and activated a `conda` environment, simply type:
 $ conda install plascope
 ```
 
-## Classification of contigs according to their location
+## Usage
 
 You can choose between two modes:
 * Mode 1: SPAdes assembly then contig classification
@@ -80,22 +80,31 @@ Github:
 https://github.com/GuilhemRoyer/PlaScope
 ````
 
-## *E. coli* database
+`PlaScope` uses a database (see [this section](#DB)) made of 3 files.
+The argument `--db_dir` is the path to the directory where these 3 files are located.
+The argument `--db_name` is the common part between the file names (see examples).
+
+
+## <a name="DB">Databases</a>
+
+### *E. coli* database
 
 To get the *E. coli* database, please download the following file on Zenodo: https://doi.org/10.5281/zenodo.1311641
 
-After extracting the tar.gz file, you will have 3 files : chromosome_plasmid_db.1.cf, chromosome_plasmid_db.2.cf and chromosome_plasmid_db.3.cf. All these files are required for PlaScope. The argument --db_dir in PlaScope is the path to the directory where these 3 files are located, and the argument --db_name in this case is "chromosome_plasmid_db".
+After extracting the tar.gz file, you will have 3 files : `chromosome_plasmid_db.1.cf`, `chromosome_plasmid_db.2.cf` and `chromosome_plasmid_db.3.cf`. All these files are required for `PlaScope`.
+In this case, the `--db_name` to use is "chromosome_plasmid_db".
 
 
-## Klebsiella database
+### Klebsiella database
 
 To get the Klebsiella database, please download the following file on Zenodo: https://doi.org/10.5281/zenodo.1311647
 
-After extracting the tar.gz file, you will have 3 files : Klebsiella_PlaScope.1.cf, Klebsiella_PlaScope.2.cf and Klebsiella_PlaScope.3.cf. All these files are required for PlaScope. The argument --db_dir in PlaScope is the path to the directory where these 3 files are located, and the argument --db_name in this case is "Klebsiella_PlaScope".
+After extracting the tar.gz file, you will have 3 files : `Klebsiella_PlaScope.1.cf`, `Klebsiella_PlaScope.2.cf` and `Klebsiella_PlaScope.3.cf`. All these files are required for `PlaScope`.
+In this case, the `--db_name` to use is "Klebsiella_PlaScope".
 
 This database has not been extensively benchmarked. We only have assessed its performances by searching for plasmids and resistance genes location on a set of 12 *Klebsiella pneumoniae* strains from https://academic.oup.com/jac/article/73/7/1796/4966148.
 
-## Create your own database
+### Create your own database
 
 You can also design your own database as explained on [this page](https://ccb.jhu.edu/software/centrifuge/manual.shtml#custom-database).
 
