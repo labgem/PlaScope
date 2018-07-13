@@ -17,13 +17,26 @@ We also propose a Klebsiella database that has been evaluated on a clinical data
 
 We think that this method can easily be applied to other bacterial species since you have got enough reference data (e.g. *Staphylococcus aureus*, *Enterococcus sp.* ...).
 
-## Dependencies
+## Installation
+
+### Dependencies
 
 You must install these dependencies before you start :
 
 * [SPAdes](http://bioinf.spbau.ru/spades) 3.10.1 or later if you want to run the assembly (= mode 1) (header of contigs must be the same as in version 3.10.1)
 * [Centrifuge](https://github.com/infphilo/centrifuge) 1.0.3
 
+`PlaScope` is essentially a wrapper script (called `plaScope.sh`) around those tools.
+It's written in `bash` and `awk` and should work on Linux and Mac OS X both with GNU awk and BSD awk.
+
+### Installation with BioConda
+
+The easiest way to install `PlaScope` and its dependencies is through [BioConda](https://bioconda.github.io/).
+Once you have created and activated a `conda` environment, simply type:
+
+```bash
+$ conda install plascope
+```
 
 ## Classification of contigs according to their location
 
