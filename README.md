@@ -13,8 +13,9 @@ A preprint version is available on: https://www.biorxiv.org/content/early/2018/0
 This method enables you to classify contigs from a WGS assembly according to their location (i.e. plasmid or chromosome). It is based on a smart tool called [Centrifuge](https://github.com/infphilo/centrifuge), initially developed as a metagenomic classifier.
 We propose here an application on *E. coli* plasmidome, with a specific database build on one hand completely finished genomes of *E. coli* from the NCBI, and on the other hand on a custom plasmid database. In fact 3 databases of plasmid have been merged together : plasmids used to create plasmidfinder (http://aac.asm.org/content/58/7/3895.long), plasmids proposed by Orlek *et al.* (https://www.sciencedirect.com/science/article/pii/S2352340917301567?via%3Dihub) and plasmids from the RepliColScope project (http://www.agence-nationale-recherche.fr/Project-ANR-10-GENM-0012 / https://www.ebi.ac.uk/ena/data/view/PRJEB24625)
 
-However we think that this method can easily be applied to other bacterial species since you have got enough reference data. For this purpose we also provide a database for *Klebsiella* strains.
+We also propose a Klebsiella database that has been evaluated on a clinical dataset of 12 *Klebsiella pneumoniae* strains.
 
+We think that this method can easily be applied to other bacterial species since you have got enough reference data (e.g. *Staphylococcus aureus*, *Enterococcus sp.* ...).
 
 ## Dependencies
 
@@ -68,19 +69,18 @@ https://github.com/GuilhemRoyer/PlaScope
 
 ## *E. coli* database
 
-To download *E. coli* database, please download the 3 required files on Zenodo: http://doi.org/10.5281/zenodo.1245664
+To get the *E. coli* database, please download the following file on Zenodo: https://zenodo.org/record/1311641
 
-See Reference_chromosome.tab for the list of *E. coli* chromosome used in our example.
-See Reference_plasmid.tab for the list of plasmids and their related database.
+After extracting the tar.gz file, you will have 3 files : chromosome_plasmid_db.1.cf, chromosome_plasmid_db.2.cf and chromosome_plasmid_db.3.cf. All these files are required for PlaScope. The argument --db_dir in PlaScope is the path to the directory where these 3 files are located, and the argument --db_name in this case is "chromosome_plasmid_db".
 
-## *Klebsiella* database
 
-We propose another database for *Klebsiella* strains, the 3 required files are also available on Zenodo : https://zenodo.org/record/1265882#.WxVZhHWFPmF
+## Klebsiella database
 
-However this database has not been extensively evaluated. We only have assessed its performances on betalactamase-coding gene location for 571 strains of *Klebsiella* genera (Klebsiella_analysed_genomes_list.tab). See Klebsiella_PlaScope_tree.svg for the results. "Unclassified" location of some betalactamases was mainly due to short-size of the contigs carrying this genes (median: 2375 bp, 1st quarter: 2321 bp, 3rd quarter: 3863 bp). Resistance genes presence/absence was determined with [abricate](https://github.com/tseemann/abricate) and the ResFinder database (Zankari *et al.*, JAC, 2012). The tree was constructed with [iTOL](https://itol.embl.de/upload.cgi).
+To get the Klebsiella database, please download the following file on Zenodo: https://zenodo.org/record/1311647
 
-See Reference_chromosome_klebsiella.tab for the list of *Klebsiella* chromosome used in this database.
-See Reference_plasmid_klebsiella.tab for the list of plasmids.
+After extracting the tar.gz file, you will have 3 files : Klebsiella_PlaScope.1.cf, Klebsiella_PlaScope.2.cf and Klebsiella_PlaScope.3.cf. All these files are required for PlaScope. The argument --db_dir in PlaScope is the path to the directory where these 3 files are located, and the argument --db_name in this case is "Klebsiella_PlaScope".
+
+This database has not been extensively benchmarked. We only have assessed its performances by searching for plasmids and resistance genes location on a set of 12 *Klebsiella pneumoniae* strains from https://academic.oup.com/jac/article/73/7/1796/4966148.
 
 ## Create your own database
 
