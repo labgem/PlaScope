@@ -1,6 +1,6 @@
 The script evaluation.sh is used to compare prediction results from PlaScope, Plasflow and cBar for a given genome. It calculates recall, specificity, precision, accuracy and F1-score.
 
-Quast v4.5 is required to run the evaluation and the script filter_spades.py (writted by David Powell, available here: https://github.com/drpowell/utils/blob/master/filter-spades.pys.py)
+Quast v4.5 is required to run the evaluation as well as filter_spades.py script (writted by David Powell, available here: https://github.com/drpowell/utils/blob/master/filter-spades.pys.py)
 
 usage: evaluation.sh [OPTIONS] [ARGUMENTS]
 
