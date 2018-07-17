@@ -27,7 +27,7 @@ We think that this method can easily be applied to other bacterial species since
 
 You must install these dependencies before you start :
 
-* [SPAdes](http://bioinf.spbau.ru/spades) 3.10.1 or later if you want to run the assembly (= mode 1) (header of contigs must be the same as in version 3.10.1)
+* [SPAdes](http://bioinf.spbau.ru/spades) 3.10.1 or later if you want to run the assembly (= mode 1) (header of contigs must be the same as in version 3.10.1, *e.g* >NODE_1_length_506801_cov_117.065)
 * [Centrifuge](https://github.com/infphilo/centrifuge) 1.0.3
 
 ### Installation
@@ -122,10 +122,35 @@ You can also design your own database as explained on [this page](https://ccb.jh
 You need to prepare four files:
 
 * database.fna : a multifasta file of your database
-* nodes.dmp : an artificial taxonomy (*i.e.* root, chromosome, plasmid)
-* seqid_to_taxid.map : a mapping file between the sequences and their taxonomic assignment
-* names.dmp : a file mapping taxonomy IDs to a name
+```
+>Chromosome_1
+ATGGATAAGTTGCTGAACAAAAAGAT......
+>Chromosome_2
+GAGTGAACGGATGAAACAGAAAGACC......
+>Plasmid_1
+TCTCGAATGATAAAGGCTATGATGGC......
+```
 
+* nodes.dmp : an artificial taxonomy (*i.e.* root, chromosome, plasmid)
+```
+1 | 1 |	root
+2 | 1 | chromosome
+3 | 1 | plasmid
+```
+
+* seqid_to_taxid.map : a mapping file between the sequences and their taxonomic assignment
+```
+Chromosome_1  2
+Chromosome_2  2
+Plasmid_1 3
+```
+
+* names.dmp : a file mapping taxonomy IDs to a name
+```
+1	|	root	|   |   |
+2	|	chromosome  |   |   |
+3	|	plasmide  |   |   |
+```
 Then, build your database as follow:
 
 ```
