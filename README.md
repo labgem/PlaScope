@@ -5,7 +5,15 @@
 
 A targeted approach to assess the plasmidome of bacteria.
 
-A preprint version is available on: https://www.biorxiv.org/content/early/2018/05/30/334805
+If you use this tool, please cite : G. Royer, J.-W. Decousser, C. Branger, M. Dubois, C. Médigue, E. Denamur, D. Vallenet. PlaScope: a
+targeted approach to assess the plasmidome from genome assemblies at species level. Microbial
+Genomics, 2018 Sep;4(9).
+
+And don't forget the publications related to its dependencies : 
+- Bankevich A, Nurk S, Antipov D, Gurevich AA, Dvorkin M et al. SPAdes: a new genome assembly algorithm and its applications to single-cell sequencing. J Comput Biol 2012;19:455–477
+- Kim D, Song L, Breitwieser FP, Salzberg SL. Centrifuge: rapid and sensitive classification of metagenomic sequences. Genome Res
+2016;26:1721–1729
+
 
 ## Tell me more about PlaScope
 
