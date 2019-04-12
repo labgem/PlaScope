@@ -57,6 +57,11 @@ $ conda install plascope
 
 Note that several versions of `awk` are available in `conda` so you can further control the environment.
 
+### Usage with the IFB Cloud
+
+Another way to use `PlaScope` is through the [IFB Cloud](https://biosphere.france-bioinformatique.fr/).
+Just create an account and launch the [PlaScope](https://biosphere.france-bioinformatique.fr/catalogue/appliance/155/) appliance.
+
 ## Usage
 
 You can choose between two modes:
