@@ -18,7 +18,7 @@ And don't forget the publications related to its dependencies :
 ## Tell me more about PlaScope
 
 
-This method enables you to classify contigs from a WGS assembly according to their location (i.e. plasmid or chromosome). It is based on a smart tool called [Centrifuge](https://github.com/DaehwanKimLab/centrifuge), initially developed as a metagenomic classifier.
+This method enables you to classify contigs from a WGS assembly according to their location (i.e. plasmid or chromosome). It is based on a smart tool called [Centrifuge](http://www.ccb.jhu.edu/software/centrifuge/), initially developed as a metagenomic classifier.
 We propose here an application on *E. coli* plasmidome, with a specific database build on one hand on completely finished genomes of *E. coli* from the NCBI, and on the other hand on a custom plasmid database. In fact 3 databases of plasmid have been merged together :
 
 * plasmids used to create plasmidfinder (http://aac.asm.org/content/58/7/3895.long)
