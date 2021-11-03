@@ -222,9 +222,6 @@ getline
 
 if ( $7>=contiglength && $6>=hitlength && ccov>contigcov )  print $1,TPLASCOPERES[$3]
 	
-#test if this could be fixed
-#if ( $6>=hitlength )  print $1,TPLASCOPERES[$3]
-
 else print $1,TPLASCOPERES[0]
 
 }' $plascopeextendres
@@ -255,9 +252,6 @@ getline
 {clab=$1; split(clab,T,"_") ; ccov=T[6];
 
 if ( $7>=contiglength && $6>=hitlength && ccov>contigcov )  print $1,TPLASCOPERES[$3]
-
-#test if this could be fixed
-#if ( $6>=hitlength )  print $1,TPLASCOPERES[$3]
 
 else print $1,TPLASCOPERES[0]
 
