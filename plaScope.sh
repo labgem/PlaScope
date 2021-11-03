@@ -22,7 +22,7 @@
 # Author Guilhem ROYER groyer@genoscope.cns.fr | 06/04/2018  #
 ##############################################################
 
-VERSION=1.3.1
+VERSION=1.3
 
 set -e
 set -u
@@ -60,9 +60,9 @@ Mode 1: SPAdes assembly + contig classification
   -2			reverse paired-end reads [MANDATORY]
 
 
-Mode 2: contig classification of a fasta file (only if you already have your SPAdes assembly!)
-  --fasta		SPAdes assembly fasta file [MANDATORY]
-
+Mode 2: contig classification of a fasta file (only if you already have your SPAdes or Unicycler assembly!)
+  --fasta		SPAdes or Unicycler assembly fasta file [MANDATORY]
+  -a			Specify the assembler used: spades or unicycler [MANDATORY]
 
 
 Example mode 1:
@@ -197,7 +197,41 @@ fi
 ########################
 
 
-contig_sorting()
+contig_sorting_unicycler()
+{
+
+local plascopeextendres="$1"
+
+local contigcov=${CONTIGCOV}
+local contiglength=${CONTIGLENGTH}
+local hitlength=${HITLENGTH}
+
+awk -F'\t' -v contigcov=${contigcov} -v contiglength=${contiglength} -v hitlength=${hitlength} '
+BEGIN {
+TPLASCOPERES[0]="unclassified"
+TPLASCOPERES[1]="unclassified"
+TPLASCOPERES[2]="chromosome"
+TPLASCOPERES[3]="plasmid"
+OFS="\t"
+
+#skip first line
+getline
+}
+
+{clab=$1; split(clab,T,":") ; ccov=T[5];
+
+if ( $7>=contiglength && $6>=hitlength && ccov>contigcov )  print $1,TPLASCOPERES[$3]
+	
+#test if this could be fixed
+#if ( $6>=hitlength )  print $1,TPLASCOPERES[$3]
+
+else print $1,TPLASCOPERES[0]
+
+}' $plascopeextendres
+
+}
+
+contig_sorting_spades()
 {
 
 local plascopeextendres="$1"
@@ -222,12 +256,14 @@ getline
 
 if ( $7>=contiglength && $6>=hitlength && ccov>contigcov )  print $1,TPLASCOPERES[$3]
 
+#test if this could be fixed
+#if ( $6>=hitlength )  print $1,TPLASCOPERES[$3]
+
 else print $1,TPLASCOPERES[0]
 
 }' $plascopeextendres
 
 }
-
 
 
 #########################################
@@ -263,7 +299,7 @@ output { print >  output }' $contigsortingfile $contigfile
 #### Get argument with getopts #####
 ####################################
 
-while getopts ":1:2:o:t:-:h:v:n" optchar; do
+while getopts ":1:2:o:t:-:h:v:n:a:" optchar; do
 	case "${optchar}" in
 		 -)
 			case "${OPTARG}" in
@@ -312,6 +348,9 @@ while getopts ":1:2:o:t:-:h:v:n" optchar; do
 			;;
 		o)
 			O_DIR=${OPTARG}
+			;;
+		a)
+			assembler=${OPTARG}
 			;;
 		?)
 			usage
@@ -413,7 +452,17 @@ fi
 
 #plascope variables for contig evaluation
 
+if [[ $assembler = 'unicycler' ]]
+then
+readonly CONTIGCOV=0
+
+elif [[ $assembler = 'spades' ]]
+then
 readonly CONTIGCOV=2
+
+else echo "provide valid assembler name: spades or unicycler" && exit 0
+fi
+
 readonly CONTIGLENGTH=500
 readonly HITLENGTH=100
 
@@ -451,7 +500,15 @@ centrifuge -f --threads ${THREADS} -x ${DB_NAME} -U ${FASTA} -k 1 --report-file 
 
 echo "Step $step: Extraction of plasmid, chromosome and unclassified predictions"
 
-contig_sorting ${OUTPUT}/${PREFIX}_PlaScope/Centrifuge_results/${PREFIX}_extendedresult > ${OUTPUT}/${PREFIX}_PlaScope/Centrifuge_results/${PREFIX}_list
+if [[ "$assembler" = 'unicycler' ]]; then
+contig_sorting_unicycler ${OUTPUT}/${PREFIX}_PlaScope/Centrifuge_results/${PREFIX}_extendedresult > ${OUTPUT}/${PREFIX}_PlaScope/Centrifuge_results/${PREFIX}_list
+
+elif [[ "$assembler" = 'spades' ]]; then
+contig_sorting_spades ${OUTPUT}/${PREFIX}_PlaScope/Centrifuge_results/${PREFIX}_extendedresult > ${OUTPUT}/${PREFIX}_PlaScope/Centrifuge_results/${PREFIX}_list
+
+else 
+echo "Please provide a valid assembler: spades or unicycler" && exit 0
+fi
 
 contig_extraction ${FASTA} ${OUTPUT}/${PREFIX}_PlaScope/Centrifuge_results/${PREFIX}_list ${OUTPUT}/${PREFIX}_PlaScope/PlaScope_predictions/${PREFIX}
 
