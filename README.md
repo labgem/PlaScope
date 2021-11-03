@@ -87,16 +87,16 @@ Mode 1: SPAdes assembly + contig classification
   -2			reverse paired-end reads [MANDATORY]
 
 
-Mode 2: contig classification of a fasta file (only if you already have your SPAdes assembly!)
+Mode 2: contig classification of a fasta file (only if you already have your SPAdes or Unicycler assembly!)
   --fasta		SPAdes assembly fasta file [MANDATORY]
-
+  -a                    Specify the assembler used: spades or unicycler [MANDATORY]
 
 
 Example mode 1:
 plaScope.sh -1 my_reads_1.fastq.gz -2 my_reads_2.fastq.gz -o output_directory  --db_dir path/to/DB --db_name chromosome_plasmid_db --sample name_of_my_sample
 
 Example mode 2:
-plaScope.sh --fasta my_fastafile.fasta -o output_directory --db_dir path/to/DB --db_name chromosome_plasmid_db --sample name_of_my_sample
+plaScope.sh --fasta my_fastafile.fasta -o output_directory --db_dir path/to/DB --db_name chromosome_plasmid_db --sample name_of_my_sample -a unicycler
 
 
 
