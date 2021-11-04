@@ -66,7 +66,7 @@ Just create an account and launch the [PlaScope](https://biosphere.france-bioinf
 
 You can choose between two modes:
 * Mode 1: SPAdes assembly then contig classification
-* Mode 2: contig classification only (if you already assembled your genome with SPAdes)
+* Mode 2: contig classification only (if you already assembled your genome with SPAdes or Unicycler)
 
 ```bash
 $ ./plaScope.sh -h
@@ -89,7 +89,7 @@ Mode 1: SPAdes assembly + contig classification
 
 Mode 2: contig classification of a fasta file (only if you already have your SPAdes or Unicycler assembly!)
   --fasta		SPAdes assembly fasta file [MANDATORY]
-  -a                    Specify the assembler used: spades or unicycler [MANDATORY]
+  -a                    Specify the assembler used: spades or unicycler. Default=spades.
 
 
 Example mode 1:
