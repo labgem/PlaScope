@@ -62,7 +62,7 @@ Mode 1: SPAdes assembly + contig classification
 
 Mode 2: contig classification of a fasta file (only if you already have your SPAdes or Unicycler assembly!)
   --fasta		SPAdes or Unicycler assembly fasta file [MANDATORY]
-  -a			Specify the assembler used: spades or unicycler [MANDATORY]
+  -a			Specify the assembler used: spades or unicycler. Default=spades.
 
 
 Example mode 1:
@@ -292,6 +292,9 @@ output { print >  output }' $contigsortingfile $contigfile
 ####################################
 #### Get argument with getopts #####
 ####################################
+
+#Establish default value for assembler
+assembler='spades'
 
 while getopts ":1:2:o:t:-:h:v:n:a:" optchar; do
 	case "${optchar}" in
