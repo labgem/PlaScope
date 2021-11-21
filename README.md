@@ -1,4 +1,4 @@
-<p align="center"><img src="/PlaScope_supernova.png" width="50%"></p>
+<p align="center"><img src="PlaScope_supernova.png" width="50%"></p>
 
 # PlaScope
 
