@@ -24,7 +24,7 @@ We propose here an application on *E.
 coli* plasmidome, with a specific database build on one hand on completely finished genomes of *E. coli* from the NCBI, and on the other hand on a custom plasmid database.
 In fact 3 databases of plasmid have been merged together :
 
-* plasmids used to create `PlasmidFinder`` (http://aac.asm.org/content/58/7/3895.long)
+* plasmids used to create `PlasmidFinder` (http://aac.asm.org/content/58/7/3895.long)
 * plasmids proposed by Orlek *et al.* (https://www.sciencedirect.com/science/article/pii/S2352340917301567?via%3Dihub)
 * plasmids from Branger *et al.*, Extended-spectrum ß-lactamase-genes are spreading on a wide range of Escherichia coli plasmids existing prior the use of third generation cephalosporins, Microbial Genomics, 2018, In press
 
