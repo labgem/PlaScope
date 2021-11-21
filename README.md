@@ -9,7 +9,7 @@ If you use this tool, please cite : G. Royer, J.-W. Decousser, C. Branger, M. Du
 targeted approach to assess the plasmidome from genome assemblies at species level. Microbial
 Genomics, 2018 Sep;4(9).
 
-And don't forget the publications related to its dependencies : 
+And don't forget the publications related to its dependencies :
 - Bankevich A, Nurk S, Antipov D, Gurevich AA, Dvorkin M et al. SPAdes: a new genome assembly algorithm and its applications to single-cell sequencing. J Comput Biol 2012;19:455–477
 - Kim D, Song L, Breitwieser FP, Salzberg SL. Centrifuge: rapid and sensitive classification of metagenomic sequences. Genome Res
 2016;26:1721–1729
@@ -115,7 +115,7 @@ The argument `--db_name` is the common part between the file names (see examples
 
 To get the *E. coli* database, please download the following file on Zenodo: https://doi.org/10.5281/zenodo.1311641
 
-After extracting the tar.gz file, you will have 3 files : `chromosome_plasmid_db.1.cf`, `chromosome_plasmid_db.2.cf` and `chromosome_plasmid_db.3.cf`. All these files are required for `PlaScope`.
+After extracting the tar.gz file, you will have 3 files : `chromosome_plasmid_db.1.cf`, `chromosome_plasmid_db.2.cf` and `chromosome_plasmid_db.3.cf`. All these files are required for `PlaScope`.
 In this case, the `--db_name` to use is "chromosome_plasmid_db".
 
 
