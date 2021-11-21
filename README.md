@@ -169,3 +169,8 @@ Then, build your database as follow:
 ```
 centrifuge-build -p 10 --conversion-table seqid_to_taxid.map --taxonomy-tree nodes.dmp --name-table names.dmp database.fna chromosome_plasmid_db
 ```
+
+# Contributors
+
+  - Guilhem Royer (CEA-Genoscope, now at Pasteur): design, implementation, evaluation
+  - David Valllenet (CEA-Genoscope): design
