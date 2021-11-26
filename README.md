@@ -179,3 +179,4 @@ centrifuge-build -p 10 --conversion-table seqid_to_taxid.map --taxonomy-tree nod
 
   - Guilhem Royer (CEA-Genoscope, now at Pasteur): design, implementation, evaluation
   - David Valllenet (CEA-Genoscope): design
+  - Julian Paganini (UMC Utrecht): new feature: accept unicycler assemblies
