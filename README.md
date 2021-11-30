@@ -68,7 +68,7 @@ Just create an account and launch the [PlaScope](https://biosphere.france-bioinf
 
 You can choose between two modes:
 * Mode 1: SPAdes assembly then contig classification
-* Mode 2: contig classification only (if you already assembled your genome with SPAdes)
+* Mode 2: contig classification only (if you already assembled your genome with SPAdes or Unicycler)
 
 ```bash
 $ ./plaScope.sh -h
@@ -89,16 +89,16 @@ Mode 1: SPAdes assembly + contig classification
   -2			reverse paired-end reads [MANDATORY]
 
 
-Mode 2: contig classification of a fasta file (only if you already have your SPAdes assembly!)
+Mode 2: contig classification of a fasta file (only if you already have your SPAdes or Unicycler assembly!)
   --fasta		SPAdes assembly fasta file [MANDATORY]
-
+  -a                    Specify the assembler used: spades or unicycler. Default=spades.
 
 
 Example mode 1:
 plaScope.sh -1 my_reads_1.fastq.gz -2 my_reads_2.fastq.gz -o output_directory  --db_dir path/to/DB --db_name chromosome_plasmid_db --sample name_of_my_sample
 
 Example mode 2:
-plaScope.sh --fasta my_fastafile.fasta -o output_directory --db_dir path/to/DB --db_name chromosome_plasmid_db --sample name_of_my_sample
+plaScope.sh --fasta my_fastafile.fasta -o output_directory --db_dir path/to/DB --db_name chromosome_plasmid_db --sample name_of_my_sample -a unicycler
 
 
 
@@ -179,3 +179,4 @@ centrifuge-build -p 10 --conversion-table seqid_to_taxid.map --taxonomy-tree nod
 
   - Guilhem Royer (CEA-Genoscope, now at Pasteur): design, implementation, evaluation
   - David Valllenet (CEA-Genoscope): design
+  - Julian Paganini (UMC Utrecht): new feature: accept unicycler assemblies
