@@ -77,7 +77,7 @@ usage: plaScope.sh [OPTIONS] [ARGUMENTS]
 General options:
   -h, --help		display this message and exit
   -v, --version		display version number and exit
-  -n, --no-banner	don't print beautiful banners
+  -n, --no-banner	do not print beautiful banners
   -t			number of threads[OPTIONAL] [default : 8]
   -o			output directory [OPTIONAL] [default : current directory]
   --sample		Sample name [MANDATORY]
@@ -104,7 +104,7 @@ plaScope.sh --fasta my_fastafile.fasta -o output_directory --db_dir path/to/DB -
 
 Github:
 https://github.com/GuilhemRoyer/PlaScope
-````
+```
 
 `PlaScope` uses a database (see [this section](#DB)) made of 3 files.
 The argument `--db_dir` is the path to the directory where these 3 files are located.
