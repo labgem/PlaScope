@@ -77,7 +77,7 @@ usage: plaScope.sh [OPTIONS] [ARGUMENTS]
 General options:
   -h, --help		display this message and exit
   -v, --version		display version number and exit
-  -n, --no-banner	don't print beautiful banners
+  -n, --no-banner	do not print beautiful banners
   -t			number of threads[OPTIONAL] [default : 8]
   -o			output directory [OPTIONAL] [default : current directory]
   --sample		Sample name [MANDATORY]
@@ -92,7 +92,7 @@ Mode 1: SPAdes assembly + contig classification
 Mode 2: contig classification of a fasta file (only if you already have your SPAdes or Unicycler assembly!)
   --fasta		SPAdes assembly fasta file [MANDATORY]
   -a                    Specify the assembler used: spades or unicycler. Default=spades.
-
+  -g                    gplas format [OPTIONAL]. Provide results in format compatible with gplas.
 
 Example mode 1:
 plaScope.sh -1 my_reads_1.fastq.gz -2 my_reads_2.fastq.gz -o output_directory  --db_dir path/to/DB --db_name chromosome_plasmid_db --sample name_of_my_sample
@@ -104,7 +104,7 @@ plaScope.sh --fasta my_fastafile.fasta -o output_directory --db_dir path/to/DB -
 
 Github:
 https://github.com/GuilhemRoyer/PlaScope
-````
+```
 
 `PlaScope` uses a database (see [this section](#DB)) made of 3 files.
 The argument `--db_dir` is the path to the directory where these 3 files are located.
@@ -179,4 +179,4 @@ centrifuge-build -p 10 --conversion-table seqid_to_taxid.map --taxonomy-tree nod
 
   - Guilhem Royer (CEA-Genoscope, now at Pasteur): design, implementation, evaluation
   - David Valllenet (CEA-Genoscope): design
-  - Julian Paganini (UMC Utrecht): new feature: accept unicycler assemblies
+  - Julian Paganini (UMC Utrecht): new features. 1-Accept unicycler assemblies. 2- Format output for use with gplas

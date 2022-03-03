@@ -63,7 +63,7 @@ Mode 1: SPAdes assembly + contig classification
 Mode 2: contig classification of a fasta file (only if you already have your SPAdes or Unicycler assembly!)
   --fasta		SPAdes or Unicycler assembly fasta file [MANDATORY]
   -a			Specify the assembler used: spades or unicycler. Default=spades.
-
+  -g			Don't produce the gplas formatted output [OPTIONAL]. 
 
 Example mode 1:
 plaScope.sh -1 my_reads_1.fastq.gz -2 my_reads_2.fastq.gz -o output_directory  --db_dir path/to/DB --db_name chromosome_plasmid_db --sample name_of_my_sample
@@ -206,7 +206,7 @@ local contigcov=${CONTIGCOV}
 local contiglength=${CONTIGLENGTH}
 local hitlength=${HITLENGTH}
 
-awk -F'\t' -v contigcov=${contigcov} -v contiglength=${contiglength} -v hitlength=${hitlength} '
+awk -F'\t' -v contiglength=${contiglength} -v hitlength=${hitlength} '
 BEGIN {
 TPLASCOPERES[0]="unclassified"
 TPLASCOPERES[1]="unclassified"
@@ -218,12 +218,8 @@ OFS="\t"
 getline
 }
 
-{clab=$1; split(clab,T,":") ; ccov=T[5];
-
-if ( $7>=contiglength && $6>=hitlength && ccov>contigcov )  print $1,TPLASCOPERES[$3]
-	
+{ if ( $7>=contiglength && $6>=hitlength )  print $1,TPLASCOPERES[$3]
 else print $1,TPLASCOPERES[0]
-
 }' $plascopeextendres
 
 }
@@ -271,7 +267,7 @@ local contigfile="$1"
 local contigsortingfile="$2"
 local contigfileprefix="$3"
 
-awk -F'\t' -v contigfileprefix=${contigfileprefix} '
+awk -F'\t| ' -v contigfileprefix=${contigfileprefix} '
 NR==FNR{Tcontig[">"$1]=$2;next}
 
 /^>/ {
@@ -296,7 +292,7 @@ output { print >  output }' $contigsortingfile $contigfile
 #Establish default value for assembler
 assembler='spades'
 
-while getopts ":1:2:o:t:-:h:v:n:a:" optchar; do
+while getopts ":1:2:o:t:-:h:v:n:a:g" optchar; do
 	case "${optchar}" in
 		 -)
 			case "${OPTARG}" in
@@ -349,6 +345,10 @@ while getopts ":1:2:o:t:-:h:v:n:a:" optchar; do
 		a)
 			assembler=${OPTARG}
 			;;
+                g)
+                        gplas_output='true'
+                        ;; 
+                
 		?)
 			usage
 			exit 1
@@ -509,6 +509,11 @@ fi
 
 contig_extraction ${FASTA} ${OUTPUT}/${PREFIX}_PlaScope/Centrifuge_results/${PREFIX}_list ${OUTPUT}/${PREFIX}_PlaScope/PlaScope_predictions/${PREFIX}
 
+#Create gplas formatted result file
+if [ -z "${gplas_output+x}" ]; then
+   mkdir ${OUTPUT}/gplas_formatted_results
+   ./format_results_gplas.sh -i ${OUTPUT}/${PREFIX}_PlaScope/Centrifuge_results/${PREFIX}_extendedresult -o ${OUTPUT}/gplas_formatted_results/${PREFIX}_plasmid_prediction.tab -p ${OUTPUT}/${PREFIX}_PlaScope/PlaScope_predictions/ -a ${assembler}
+fi
 echo "If you use PlaScope please cite: ..."
 
 exit 0
