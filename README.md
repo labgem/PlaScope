@@ -14,6 +14,9 @@ And don't forget the publications related to its dependencies :
 - Kim D, Song L, Breitwieser FP, Salzberg SL. Centrifuge: rapid and sensitive classification of metagenomic sequences. Genome Res
 2016;26:1721–1729
 
+# Warning
+
+When using PlaScope, you must use **a species-specific database suitable for the bacterial species you are working on**. Some have been created by us or by others, but you can also create your own database.
 
 ## Tell me more about PlaScope
 
@@ -132,6 +135,16 @@ In this case, the `--db_name` to use is "Klebsiella_PlaScope".
 
 This database has not been extensively benchmarked.
 We only have assessed its performances by searching for plasmids and resistance genes location on a set of 12 *Klebsiella pneumoniae* strains from https://academic.oup.com/jac/article/73/7/1796/4966148.
+
+### Enterococcus database
+
+To get the Enterocci database, please download the following file on Figshare: https://doi.org/10.6084/m9.figshare.33990655
+
+After extracting the tar.gz file, you will have 4 files : `enterococcus_chromosome_plasmid_db.1.cf`, `enterococcus_chromosome_plasmid_db.2.cf``, `enterococcus_chromosome_plasmid_db.3.cf` and `enterococcus_chromosome_plasmid_db.4.cf`.
+All these files are required for `PlaScope`.
+In this case, the `--db_name` to use is "enterococcus_chromosome_plasmid_db".
+
+This database was built and kindly provided by @piranfar, from 812 complete public assemblies (*E. faecium*, *E. faecalis*): 3,307 labelled sequences, 813 chromosomes and 2,494 plasmid.
 
 ### Create your own database
 
