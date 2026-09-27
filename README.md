@@ -144,7 +144,7 @@ After extracting the tar.gz file, you will have 4 files : `enterococcus_chromoso
 All these files are required for `PlaScope`.
 In this case, the `--db_name` to use is "enterococcus_chromosome_plasmid_db".
 
-This database was built and kindly provided by @piranfar, from 812 complete public assemblies (*E. faecium*, *E. faecalis*): 3,307 labelled sequences, 813 chromosomes and 2,494 plasmid.
+This database was built and kindly provided by [@piranfar](https://github.com/piranfar), from 812 complete public assemblies (*E. faecium*, *E. faecalis*): 3,307 labelled sequences, 813 chromosomes and 2,494 plasmid.
 
 ### Create your own database
 
