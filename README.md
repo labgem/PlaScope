@@ -140,7 +140,7 @@ We only have assessed its performances by searching for plasmids and resistance 
 
 To get the Enterocci database, please download the following file on Figshare: https://doi.org/10.6084/m9.figshare.33990655
 
-After extracting the tar.gz file, you will have 4 files : `enterococcus_chromosome_plasmid_db.1.cf`, `enterococcus_chromosome_plasmid_db.2.cf``, `enterococcus_chromosome_plasmid_db.3.cf` and `enterococcus_chromosome_plasmid_db.4.cf`.
+After extracting the tar.gz file, you will have 4 files : `enterococcus_chromosome_plasmid_db.1.cf`, `enterococcus_chromosome_plasmid_db.2.cf`, `enterococcus_chromosome_plasmid_db.3.cf` and `enterococcus_chromosome_plasmid_db.4.cf`.
 All these files are required for `PlaScope`.
 In this case, the `--db_name` to use is "enterococcus_chromosome_plasmid_db".
 
